@@ -83,3 +83,13 @@ To run WebProtégé using the Docker container
    $ docker-compose up
    ```
 3) Browse to WebProtégé in a Web browser by navigating to [http://localhost:5000](http://localhost:5000)
+
+4) Complete initial setup
+
+```bash
+docker exec -it webprotege bash
+java -jar /webprotege-cli.jar create-admin-account
+
+docker exec -it webprotege java -jar /webprotege-cli.jar create-admin-account
+```
+
