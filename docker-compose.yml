@@ -6,7 +6,7 @@ services:
     container_name: webprotege-mongodb
     image: mongo:4.1-bionic
     restart: unless-stopped
-    vvolumes: 
+    volumes: 
       - /data/webprotege/mongodb:/data/db
 
   webprotege:
