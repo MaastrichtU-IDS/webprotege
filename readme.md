@@ -83,6 +83,7 @@ services:
       - wpmongo
    ```
 2) Enter this following command in the Terminal to start the docker container.
+
    ```bash
 docker-compose up -d
    ```
@@ -94,3 +95,6 @@ docker-compose up -d
 docker exec -it webprotege java -jar /webprotege-cli.jar create-admin-account
 ```
 
+5) Go to setting page to define the `System notification email address` and `application host URL`: https://protege.137.120.31.101.nip.io/#application/settings
+
+6) Still in the Setting page: enable `User creation`, `Project creation` and `Project import`
