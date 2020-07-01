@@ -61,35 +61,36 @@ Running from Docker
 
 To run WebProtégé using the Docker container
 
-1) Create a new file called "docker-compose.yml" and copy-and-paste the following text:
-   ```yml
-   version: '3'
+1) Create a new file called `docker-compose.yml` and copy-and-paste the following text:
 
-   services:
-     wpmongo:
-       image: mongo:4.1-bionic
-     webprotege:
-       image: protegeproject/webprotege
-       restart: always
-       environment:
-         - webprotege.mongodb.host=wpmongo
-       ports:
-         - 5000:8080
-       depends_on:
-         - wpmongo
+   ```yml
+version: '3'
+
+services:
+  wpmongo:
+    container_name: webprotege-mongodb
+    image: mongo:4.1-bionic
+    
+  webprotege:
+    container_name: webprotege
+    image: protegeproject/webprotege
+    restart: always
+    environment:
+      - webprotege.mongodb.host=wpmongo
+    ports:
+      - 5000:8080
+    depends_on:
+      - wpmongo
    ```
 2) Enter this following command in the Terminal to start the docker container.
    ```bash
-   $ docker-compose up
+docker-compose up -d
    ```
 3) Browse to WebProtégé in a Web browser by navigating to [http://localhost:5000](http://localhost:5000)
 
 4) Complete initial setup
 
 ```bash
-docker exec -it webprotege bash
-java -jar /webprotege-cli.jar create-admin-account
-
 docker exec -it webprotege java -jar /webprotege-cli.jar create-admin-account
 ```
 
