@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+
+  wpmongo:
+    container_name: webprotege-mongodb
+    image: mongo:4.1-bionic
+    restart: unless-stopped
+
+  webprotege:
+    container_name: webprotege
+    image: protegeproject/webprotege
+    depends_on:
+      - wpmongo
+    restart: unless-stopped
+    environment:
+      - webprotege.mongodb.host=wpmongo
+      - VIRTUAL_HOST=protege.137.120.31.101.nip.io
+      - LETSENCRYPT_HOST=protege.137.120.31.101.nip.io
+      - VIRTUAL_PORT=8080
+    # ports:
+    #   - 5000:8080
+
