@@ -6,6 +6,8 @@ services:
     container_name: webprotege-mongodb
     image: mongo:4.1-bionic
     restart: unless-stopped
+    vvolumes: 
+      - /data/webprotege/mongodb:/data/db
 
   webprotege:
     container_name: webprotege
@@ -18,6 +20,8 @@ services:
       - VIRTUAL_HOST=protege.137.120.31.101.nip.io
       - LETSENCRYPT_HOST=protege.137.120.31.101.nip.io
       - VIRTUAL_PORT=8080
+    volumes: 
+      - /data/webprotege/data:/srv/webprotege
     # ports:
     #   - 5000:8080
 
